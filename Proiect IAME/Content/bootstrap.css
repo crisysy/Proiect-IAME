@@ -3350,13 +3350,13 @@ fieldset:disabled a.btn {
 }
 
 .btn-link {
-  font-weight: 400;
-  color: #1a1a1a;
-  text-decoration: none;
+  color: #fff;
+  background-color: #1a1a1a;
+  border-color: #1a1a1a;
 }
 
 .btn-link:hover {
-  color: black;
+  color: #818689;
   text-decoration: underline;
 }
 

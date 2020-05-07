@@ -9,7 +9,7 @@ namespace Proiect_IAME.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Proiect_IAME.Models.ApplicationDbContext context)

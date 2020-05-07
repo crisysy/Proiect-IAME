@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Proiect_IAME.SqlViews;
 
 namespace Proiect_IAME.Models
 {
@@ -29,5 +30,7 @@ namespace Proiect_IAME.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Programare> Programari { get; set; }
     }
 }
