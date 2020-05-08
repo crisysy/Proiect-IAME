@@ -21,4 +21,5 @@ namespace Proiect_IAME.ValueObjects
         [Display(Name = "Vopsit - păr scurt")]
         VopsitScurt = 6
     }
+
 }

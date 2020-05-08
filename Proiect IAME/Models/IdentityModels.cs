@@ -32,5 +32,6 @@ namespace Proiect_IAME.Models
         }
 
         public DbSet<Programare> Programari { get; set; }
+        public DbSet<DurateServicii> DurateServicii { get; set; }
     }
 }

@@ -23,6 +23,8 @@ namespace Proiect_IAME.SqlViews
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
 
+        public Interval? Interval { get; set; }
+
         public Serviciu Serviciu { get; set; }
     }
 }

@@ -1,0 +1,50 @@
+﻿@using Proiect_IAME.ValueObjects
+@model IEnumerable<Proiect_IAME.SqlViews.Programare>
+
+@{
+    ViewBag.Title = "Programări curente";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p>
+    <br>
+    <br>
+</p>
+
+<p class="btn btn-outline-primary">@Html.ActionLink("Programare nouă", "SelectDate")</p>
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Interval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Serviciu)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+              @item.Interval.GetDescription()
+            </td>
+            <td>
+                @item.Serviciu.GetDisplayName()
+            </td>
+            <td>
+                @Html.ActionLink("Editează", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Șterge", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
