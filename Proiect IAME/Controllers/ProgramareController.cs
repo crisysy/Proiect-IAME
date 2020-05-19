@@ -17,7 +17,7 @@ namespace Proiect_IAME.Controllers
     public class ProgramareController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private DateTime DataAleasa = DateTime.Today;
+
         // GET: Programari
         public ActionResult Index()
         {
@@ -26,6 +26,14 @@ namespace Proiect_IAME.Controllers
 
             return View(programari.ToList());
         }
+
+        public ActionResult Admin()
+        {
+            var programari = db.Programari.Where(x => x.Interval.HasValue).OrderByDescending(x => x.Data).ThenBy(x => x.Interval);
+
+            return View(programari.ToList());
+        }
+
         public ActionResult SelectDate()
         {
             return View();

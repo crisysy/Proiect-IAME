@@ -271,8 +271,9 @@
     <Content Include="Views\Programare\Create.cshtml" />
     <Content Include="Views\Programare\Index.cshtml" />
     <Content Include="Views\Programare\SelectDate.cshtml" />
-    <Content Include="Views\Programare\Edit.cshtml" />
     <Content Include="Views\Programare\Delete.cshtml" />
+    <Content Include="Views\Programare\Admin.cshtml" />
+    <Content Include="Views\Programare\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
