@@ -19,7 +19,9 @@ namespace Proiect_IAME.ValueObjects
         [Display(Name = "Vopsit - păr mediu")]
         VopsitMediu = 5,
         [Display(Name = "Vopsit - păr scurt")]
-        VopsitScurt = 6
+        VopsitScurt = 6,
+        [Display(Name = "Coafat")]
+        Coafat = 7
     }
 
 }

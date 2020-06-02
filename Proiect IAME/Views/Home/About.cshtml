@@ -3,10 +3,73 @@
 }
 <p>
     <br>
-    <br>
 </p>
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Proiect Master Ingineria și Managementul Sistemelor de Afaceri</p>
-<p>Ingineria afacerilor în mediul electronic</p>
+<div class="card text-white bg-danger mb-3" style="max-width: 67rem;">
+    <div class="card-header">Măsuri COVID-19</div>
+    <div class="card-body">
+        <h4 class="card-title">Condiții de prezentare</h4>
+        <p class="card-text">
+            Pentru a asigura sănătatea dumneavoastră și a celor din jur, vă rugăm să anulați programările efectuate în cazul în care suspectați că ați
+            putea fi infectat(ă) și să vă prezentați la salon purtând o mască și manuși. La intrarea în salon, vi se va măsura temperatura și vi se vor oferi săculeți de
+            protecție pentru încălțăminte.
+        </p>
+    </div>
+</div>
+
+<div class="card-columns">
+
+    <div class="card mb-3" style="max-width: 20rem;">
+        <h3 class="card-header">Tuns</h3>
+        <div class="card-body">
+            <h5 class="card-title">Servicii de tuns</h5>
+            <h6 class="card-subtitle text-muted">Click pentru a face o rezervare</h6>
+        </div>
+        <img style="height: 200px; width: 100%; display: block;" src="~/Pictures/tuns.png" alt="Card image">
+        <div class="card-body">
+            <p class="card-text">La salonul nostru, tunsorile sun realizate de angajați co o experiență extinsă în domeniu.</p>
+        </div>
+        <div class="card-body">
+            <p class="btn btn-outline-primary"> @Html.ActionLink("Verifică disponibilitatea", "SelectDate", "Programare")</p>
+        </div>
+        <div class="card-footer text-muted">
+            Durată: ~50min
+        </div>
+    </div>
+    <div class="card mb-3" style="max-width: 20rem;">
+        <h3 class="card-header">Vopsit</h3>
+        <div class="card-body">
+            <h5 class="card-title">Servicii de vopsit</h5>
+            <h6 class="card-subtitle text-muted">Click pentru a face o rezervare</h6>
+        </div>
+        <img style="height: 200px; width: 100%; display: block;" src="~/Pictures/vopsit.png" alt="Card image">
+        <div class="card-body">
+            <p class="card-text">Vopselele aplicate sunt de selectate special pentru a oferi culori vibrante fără a deteriora părul.</p>
+        </div>
+        <div class="card-body">
+            <p class="btn btn-outline-primary"> @Html.ActionLink("Verifică disponibilitatea", "SelectDate", "Programare")</p>
+        </div>
+        <div class="card-footer text-muted">
+            Durată: ~60min
+        </div>
+    </div>
+    <div class="card mb-3" style="max-width: 20rem;">
+        <h3 class="card-header">Coafură</h3>
+        <div class="card-body">
+            <h5 class="card-title">Servicii de coafat</h5>
+            <h6 class="card-subtitle text-muted">Click pentru a face o rezervare</h6>
+        </div>
+        <img style="height: 200px; width: 100%; display: block;" src="~/Pictures/coafat.png" alt="Card image">
+        <div class="card-body">
+            <p class="card-text">Indiferent de eveniment, salonul nostru se va asigura că părul dumneavoastră arata extraordinar.</p>
+        </div>
+        <div class="card-body">
+            <p class="btn btn-outline-primary"> @Html.ActionLink("Verifică disponibilitatea", "SelectDate", "Programare")</p>
+        </div>
+        <div class="card-footer text-muted">
+            Durată: ~45min
+        </div>
+    </div>
+</div>

@@ -15,7 +15,7 @@ namespace Proiect_IAME.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Descriere proiect";
+            ViewBag.Message = "Servicii oferite";
 
             return View();
         }

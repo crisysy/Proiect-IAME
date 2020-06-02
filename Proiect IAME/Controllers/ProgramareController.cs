@@ -82,18 +82,40 @@ namespace Proiect_IAME.Controllers
 
         // POST: Programari/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Id,IdUtilizator,Data,Serviciu,Interval")] Programare programare)
+        public ActionResult Create([Bind(Include = "Id,IdUtilizator,Data,Serviciu,Interval,Nume,Contact")] Programare programare)
         {
             try
             {
                 Programare placeholder = db.Programari.Find(programare.Id);
                 placeholder.Interval = programare.Interval;
 
+                if (User.IsInRole("Administrator"))
+                {
+                    placeholder.Nume = programare.Nume;
+                    placeholder.Contact = programare.Contact;
+                }
+                else
+                {
+                    placeholder.Nume = placeholder.User.Nume;
+                    placeholder.Contact = placeholder.User.Contact ?? placeholder.User.Email;
+                }
+     
+
                 if (ModelState.IsValid)
                 {
                     db.Entry(placeholder).State = EntityState.Modified;
                     db.SaveChanges();
+
+                    if (User.IsInRole("Administrator"))
+                    {
+                        return RedirectToAction("Admin");
+                    }
+
                     return RedirectToAction("Index");
+                }
+                if (User.IsInRole("Administrator"))
+                {
+                    return RedirectToAction("Admin");
                 }
 
                 return RedirectToAction("Index");
@@ -132,6 +154,12 @@ namespace Proiect_IAME.Controllers
                 {
                     db.Entry(programare).State = EntityState.Modified;
                     db.SaveChanges();
+
+                    if (User.IsInRole("Administrator"))
+                    {
+                        return RedirectToAction("Admin");
+                    }
+
                     return RedirectToAction("Index");
                 }
 
@@ -168,6 +196,11 @@ namespace Proiect_IAME.Controllers
                 Programare programare = db.Programari.Find(id);
                 db.Programari.Remove(programare);
                 db.SaveChanges();
+
+                if (User.IsInRole("Administrator"))
+                {
+                    return RedirectToAction("Admin");
+                }
 
                 return RedirectToAction("Index");
             }

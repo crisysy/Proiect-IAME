@@ -20,6 +20,11 @@ namespace Proiect_IAME.SqlViews
         [ForeignKey("IdUtilizator")]
         public virtual ApplicationUser User { get; set; }
 
+        public string Nume { get; set; }
+
+        public string Contact { get; set; }
+
+
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
 

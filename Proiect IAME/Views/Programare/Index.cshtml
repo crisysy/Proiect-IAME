@@ -15,7 +15,7 @@
 <p class="btn btn-outline-primary">@Html.ActionLink("Programare nouă", "SelectDate")</p>
 
 <table class="table table-hover">
-    <tr>
+    <tr class="table-active">
         <th>
             @Html.DisplayNameFor(model => model.Data)
         </th>
@@ -41,7 +41,6 @@
                 @item.Serviciu.GetDisplayName()
             </td>
             <td>
-                @Html.ActionLink("Editează", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Anulează", "Delete", new { id = item.Id })
             </td>
         </tr>

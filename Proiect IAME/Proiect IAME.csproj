@@ -191,6 +191,10 @@
     <Compile Include="Migrations\202005081657059_Add_Interval.designer.cs">
       <DependentUpon>202005081657059_Add_Interval.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006022022007_Add_NumeContact.cs" />
+    <Compile Include="Migrations\202006022022007_Add_NumeContact.designer.cs">
+      <DependentUpon>202006022022007_Add_NumeContact.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -213,13 +217,17 @@
     <Content Include="Content\Site.css" />
     <Content Include="image.ico" />
     <Content Include="Pictures\blue.png" />
+    <Content Include="Pictures\coafat.png" />
     <Content Include="Pictures\gray.png" />
+    <Content Include="Pictures\image.ico" />
     <Content Include="Pictures\logo.png" />
     <Content Include="Pictures\logo2.png" />
     <Content Include="Pictures\round.png" />
     <Content Include="Pictures\round1.png" />
     <Content Include="Pictures\round2.png" />
     <Content Include="Pictures\roundPlus.png" />
+    <Content Include="Pictures\tuns.png" />
+    <Content Include="Pictures\vopsit.png" />
     <Content Include="Pictures\white.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -300,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005081657059_Add_Interval.resx">
       <DependentUpon>202005081657059_Add_Interval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006022022007_Add_NumeContact.resx">
+      <DependentUpon>202006022022007_Add_NumeContact.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -64,20 +64,28 @@ namespace Proiect_IAME.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Vă rugăm introduceți numele")]
+        [Display(Name = "Nume & Prenume")]
+        public string Nume { get; set; }
+
+        [Display(Name = "Telefon")]
+        [RegularExpression(@"^(\d{10})$", ErrorMessage = "Numărul de telefon introdus nu este valid.")]
+        public string Contact { get; set; }
+
+        [Required(ErrorMessage = "Vă rugăm introduceți numele de utilizator")]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Username")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Vă rugăm introduceți o parolă")]
+        [StringLength(100, ErrorMessage = "Parola trebuie să conțină cel puțin {2} caractere.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Parolă")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmare Parolă")]
+        [Compare("Password", ErrorMessage = "Parola introdusă nu coincide cu cea confirmată.")]
         public string ConfirmPassword { get; set; }
     }
 
