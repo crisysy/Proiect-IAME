@@ -71,6 +71,8 @@ namespace Proiect_IAME.Controllers
             var oreLucrate = Enum.GetValues(typeof(Interval)).Cast<Interval>();
             var oreOcupate = db.Programari.Where(x => x.Interval.HasValue && x.Data == placeholder.Data).Select(x => x.Interval).ToList();
 
+            ViewBag.ocupare = 100 * oreOcupate.Count() / oreLucrate.Count(); 
+
             ViewBag.oreDisponibile = oreLucrate.Where(x => !oreOcupate.Contains(x)).Select(e => new SelectListItem
             {
                 Value = ((int)e).ToString(),
