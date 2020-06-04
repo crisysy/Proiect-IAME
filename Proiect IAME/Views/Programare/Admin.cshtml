@@ -48,7 +48,7 @@
         @item.Contact
     </td>
     <td>
-        @Html.ActionLink("Anulează", "Delete", new { id = item.Id })
+        @Html.ActionLink("Anulează", "Delete", new { id = item.Id }) | @Html.ActionLink("Modifică", "Edit", new { id = item.Id })
     </td>
 </tr>
     }

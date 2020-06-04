@@ -22,14 +22,14 @@ namespace Proiect_IAME.Controllers
         public ActionResult Index()
         {
             var currentUserId = User.Identity.GetUserId();
-            var programari = db.Programari.Where(x => x.IdUtilizator == currentUserId && x.Interval.HasValue).OrderByDescending(x => x.Data).ThenBy(x => x.Interval);
+            var programari = db.Programari.Where(x => x.IdUtilizator == currentUserId && x.Interval.HasValue).OrderBy(x => x.Data).ThenBy(x => x.Interval);
 
             return View(programari.ToList());
         }
 
         public ActionResult Admin()
         {
-            var programari = db.Programari.Where(x => x.Interval.HasValue).OrderByDescending(x => x.Data).ThenBy(x => x.Interval);
+            var programari = db.Programari.Where(x => x.Interval.HasValue).OrderBy(x => x.Data).ThenBy(x => x.Interval);
 
             return View(programari.ToList());
         }
@@ -44,6 +44,20 @@ namespace Proiect_IAME.Controllers
         {
             try
             {
+
+                var oreLucrate = Enum.GetValues(typeof(Interval)).Cast<Interval>();
+                var oreOcupate = db.Programari.Where(x => x.Interval.HasValue && x.Data == programare.Data).Select(x => x.Interval).ToList();
+                var alteOre = oreLucrate.Where(x => !oreOcupate.Contains(x)).Select(e => e.GetDescription()).ToList();
+                var altIntervalDisponibil = alteOre.Any();
+
+                if (!altIntervalDisponibil)
+                {
+                    ViewBag.alteOre = string.Join(", ", alteOre);
+                    ViewBag.indisponibil = 1;
+
+                    return View(programare);
+                }
+
                 programare.Id = Guid.NewGuid();
                 programare.IdUtilizator = User.Identity.GetUserId();
                 db.Programari.Add(programare);
@@ -77,7 +91,7 @@ namespace Proiect_IAME.Controllers
             {
                 Value = ((int)e).ToString(),
                 Text = e.GetDescription()
-            }); ;
+            }); 
 
             return View(placeholder);
         }
@@ -146,14 +160,27 @@ namespace Proiect_IAME.Controllers
 
         // POST: Programari/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,IdUtilizator,Data,Serviciu,Interval")] Programare programare)
+        public ActionResult Edit([Bind(Include = "Id,IdUtilizator,Data,Serviciu,Interval,Nume,Contact")] Programare programare)
         {
+            if (db.Programari.Any(x => x.Data == programare.Data && x.Interval == programare.Interval && x.Id != programare.Id))
+            {
+                ViewBag.show = 1;
+
+                var oreLucrate = Enum.GetValues(typeof(Interval)).Cast<Interval>();
+                var oreOcupate = db.Programari.Where(x => x.Interval.HasValue && x.Data == programare.Data).Select(x => x.Interval).ToList();
+                var alteOre = oreLucrate.Where(x => !oreOcupate.Contains(x)).Select(e => e.GetDescription()).ToList();
+                ViewBag.altIntervalDisponibil = alteOre.Any();
+                ViewBag.alteOre = string.Join(", ", alteOre);
+
+                return View();
+            }
+
             try
             {
-                programare.IdUtilizator = User.Identity.GetUserId();
-
                 if (ModelState.IsValid)
                 {
+                    
+
                     db.Entry(programare).State = EntityState.Modified;
                     db.SaveChanges();
 

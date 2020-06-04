@@ -4,7 +4,24 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Modifică</h2>
+
+@if (ViewBag.show == 1)
+{
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Intervalul ales nu este disponibil</strong>
+        <hr>
+        @if (ViewBag.altIntervalDisponibil)
+        {
+            <p>Alte intervale disponibile sunt: @ViewBag.alteOre</p>
+        }
+        else
+        {
+            <p>În ziua aleasă nu mai eistă intervale disponibile.</p>
+        }
+    </div>
+}
 
 @using (Html.BeginForm())
 {
@@ -16,12 +33,51 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
+        <div class="form-group" hidden>
+            @Html.LabelFor(model => model.IdUtilizator, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IdUtilizator, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IdUtilizator, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Serviciu, htmlAttributes: new { @class = "control-label col-sm-2" })
-            <div class="col-sm-10">
+            @Html.LabelFor(model => model.Nume, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nume, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nume, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Contact, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Contact, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Contact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Data, new { @type = "date", @class = "form-control datetpicker" })
+                @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Serviciu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
                 @Html.EnumDropDownListFor(model => model.Serviciu, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Serviciu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Interval, htmlAttributes: new { @class = "control-label col-sm-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.Interval, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Interval, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -33,18 +89,6 @@
     </div>
 }
 
-@if (Request.IsAuthenticated)
-{
-    if (User.IsInRole("Administrator"))
-    {
-        <div>
-            @Html.ActionLink("  Înapoi", "Admin")
-        </div>
-    }
-    else
-    {
-        <div>
-            @Html.ActionLink("  Înapoi", "Index")
-        </div>
-    }
-}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
